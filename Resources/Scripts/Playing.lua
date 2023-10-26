@@ -87,7 +87,7 @@ local init = function()
         -- Sprite format: NumberOfFrames, X, Y, ScaleX, ScaleY, Rotation, FrameRate, R, G, B
         [DataType.Sprite] = {
             ["JamLogo"] = {
-                8, offset + 94, 97, 0.5, 0.5, 13.33, 255, 255, 255
+                8, offset + 94, 102, 0.5, 0.5, 13.33, 255, 255, 255
             },
             ["LifeBar"] = {
                 1, offset + 198, 267, 0, 0, 30.0, 255, 255, 255
