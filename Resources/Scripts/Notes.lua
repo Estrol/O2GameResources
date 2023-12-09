@@ -12,46 +12,46 @@ local init = function()
         [DataType.Note] = {
             [7] = {
                 ["LaneHit0"] = {
-                    1,"white-note", 255, 255, 255
+                    3,"white-note", 255, 255, 255
                 },
                 ["LaneHold0"] = {
-                    1,"white-hold", 255, 255, 255
+                    3,"white-hold", 255, 255, 255
                 },
                 ["LaneHit1"] = {
-                    1,"blue-note", 255, 255, 255
+                    3,"blue-note", 255, 255, 255
                 },
                 ["LaneHold1"] = {
-                    1,"blue-hold", 255, 255, 255
+                    3,"blue-hold", 255, 255, 255
                 },
                 ["LaneHit2"] = {
-                    1,"white-note", 255, 255, 255
+                    3,"white-note", 255, 255, 255
                 },
                 ["LaneHold2"] = {
-                    1,"white-hold", 255, 255, 255
+                    3,"white-hold", 255, 255, 255
                 },
                 ["LaneHit3"] = {
-                    1,"yellow-note", 255, 255, 255
+                    3,"yellow-note", 255, 255, 255
                 },
                 ["LaneHold3"] = {
-                    1,"yellow-hold", 255, 255, 255
+                    3,"yellow-hold", 255, 255, 255
                 },
                 ["LaneHit4"] = {
-                    1,"white-note", 255, 255, 255
+                    3,"white-note", 255, 255, 255
                 },
                 ["LaneHold4"] = {
-                    1,"white-hold", 255, 255, 255
+                    3,"white-hold", 255, 255, 255
                 },
                 ["LaneHit5"] = {
-                    1,"blue-note", 255, 255, 255
+                    3,"blue-note", 255, 255, 255
                 },
                 ["LaneHold5"] = {
-                    1,"blue-hold", 255, 255, 255
+                    3,"blue-hold", 255, 255, 255
                 },
                 ["LaneHit6"] = {
-                    1,"white-note", 255, 255, 255
+                    3,"white-note", 255, 255, 255
                 },
                 ["LaneHold6"] = {
-                    1,"white-hold", 255, 255, 255
+                    3,"white-hold", 255, 255, 255
                 },
                 ["NoteTrailUp"] = {
                     1,"TrailUp", 255, 255, 255

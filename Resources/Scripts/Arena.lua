@@ -18,7 +18,7 @@ local init = function()
         },
         [DataType.Numeric] = {
             ["Combo"] = {
-                { offset + 94, 194, 4, "MID", false, 255, 255, 255 }
+                { offset + 94, 194, 99, "MID", false, 255, 255, 255 }
             }
         },
         [DataType.Sprite] = {
