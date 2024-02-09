@@ -1,70 +1,72 @@
-local init = function()
-    return {
-        [DataType.Sprite] = {
-            ["NoteFrameTime"] = {
-                0,0,0,0,0,30.0
-            }
-        },
+local keyCount = Game:GetKeyCount();
+local skinPath = Game:GetSkinPath();
 
-        -- Note format: NumberOfFrames, fileName, R, G, B
-        -- fileName is the name of the file in the Notes folder
-        -- with format fileName + frameNumber + .png
-        [DataType.Note] = {
-            [7] = {
-                ["LaneHit0"] = {
-                    3,"white-note", 255, 255, 255
-                },
-                ["LaneHold0"] = {
-                    3,"white-hold", 255, 255, 255
-                },
-                ["LaneHit1"] = {
-                    3,"blue-note", 255, 255, 255
-                },
-                ["LaneHold1"] = {
-                    3,"blue-hold", 255, 255, 255
-                },
-                ["LaneHit2"] = {
-                    3,"white-note", 255, 255, 255
-                },
-                ["LaneHold2"] = {
-                    3,"white-hold", 255, 255, 255
-                },
-                ["LaneHit3"] = {
-                    3,"yellow-note", 255, 255, 255
-                },
-                ["LaneHold3"] = {
-                    3,"yellow-hold", 255, 255, 255
-                },
-                ["LaneHit4"] = {
-                    3,"white-note", 255, 255, 255
-                },
-                ["LaneHold4"] = {
-                    3,"white-hold", 255, 255, 255
-                },
-                ["LaneHit5"] = {
-                    3,"blue-note", 255, 255, 255
-                },
-                ["LaneHold5"] = {
-                    3,"blue-hold", 255, 255, 255
-                },
-                ["LaneHit6"] = {
-                    3,"white-note", 255, 255, 255
-                },
-                ["LaneHold6"] = {
-                    3,"white-hold", 255, 255, 255
-                },
-                ["NoteTrailUp"] = {
-                    1,"TrailUp", 255, 255, 255
-                },
-                ["NoteTrailDown"] = {
-                    1,"TrailDown", 255, 255, 255
-                }
-            }
-        }
+local DataNote = {
+    ["NoteTrailUp"] = {
+        Files = {
+            skinPath .. "TrailUp0.png"
+        },
+        Size = { 1, 15 },
+        FrameTime = 30.0,
+        Color = { 255, 255, 255 }
+    },
+    ["NoteTrailDown"] = {
+        Files = {
+            skinPath .. "TrailDown0.png"
+        },
+        Size = { 1, 15 },
+        FrameTime = 30.0,
+        Color = { 255, 255, 255 }
     }
+}
+
+local noteFiles = {
+    "white-note",
+    "blue-note",
+    "white-note",
+    "yellow-note",
+    "white-note",
+    "blue-note",
+    "white-note"
+}
+
+local holdFiles = {
+    "white-hold",
+    "blue-hold",
+    "white-hold",
+    "yellow-hold",
+    "white-hold",
+    "blue-hold",
+    "white-hold",
+}
+
+local laneSize = {
+    28, 22, 28, 32, 28, 22, 28 
+}
+
+for i=1, keyCount do
+    DataNote["LaneHit" .. tostring(i - 1)] = {
+        Files = {},
+        Size = { laneSize[i], 7 },
+        FrameTime = 30.0,
+        Color = { 255, 255, 255 }
+    }
+    DataNote["LaneHold" .. tostring(i - 1)] = {
+        Files = {},
+        Size = { laneSize[i], 1 },
+        FrameTime = 30.0,
+        Color = { 255, 255, 255 }
+    }
+
+    for j=1, 3 do
+        table.insert(DataNote["LaneHit" .. tostring(i - 1)].Files, skinPath .. noteFiles[i] .. tostring(j - 1) .. ".png");
+        table.insert(DataNote["LaneHold" .. tostring(i - 1)].Files, skinPath .. holdFiles[i] .. tostring(j - 1) .. ".png");
+    end
 end
 
 return {
-    type = HeaderType.Playing,
-    init = init
+    Type = Enum.HeaderType.Playing,
+    Data = {
+        [Enum.DataType.Note] = DataNote,
+    }
 }

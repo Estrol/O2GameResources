@@ -1,63 +1,117 @@
-local init = function()
-    local arenaIndex = Game:GetArenaIndex();
-    local offset = Game:GetLaneOffset();
+local arenaIndex = Game:GetArenaIndex();
+local offset = Game:GetLaneOffset();
+local keyCount = Game:GetKeyCount();
+local path = Game:GetSkinPath();
 
-    local arenaData = {
-        [DataType.Position] = {
-            [7] = {
-                ["PlayingBG"] = { 
-                    { 0, 0, 0, 0, 255, 255, 255 } 
-                },
-                ["Judge"] = { 
-                    { offset + 94, 360, 0.5, 0.5, 255, 255, 255}, 
-                    { offset + 94, 360, 0.5, 0.5, 255, 255, 255}, 
-                    { offset + 94, 360, 0.5, 0.5, 255, 255, 255}, 
-                    { offset + 94, 360, 0.5, 0.5, 255, 255, 255} 
-                }
-            }
-        },
-        [DataType.Numeric] = {
-            ["Combo"] = {
-                { offset + 94, 194, 99, "MID", false, 255, 255, 255 }
-            }
-        },
-        [DataType.Sprite] = {
-            ["ComboLogo"] = { 6, offset + 99, 213, 0.5, 1, 18.0, 255, 255, 255 },
-            ["HitEffect"] = { 9, 0, 0, 0.5, 0.45, 30.0, 255, 255, 255 },
-            ["HoldEffect"] = { 9, 0, 0, 0.5, 0.45, 30.0, 255, 255, 255 }
+local arenaFolder = path .. tostring(arenaIndex);
+if not Game:IsPathExist(arenaFolder) then
+    arenaFolder = path .. "1";
+end
+
+local DataPositions = {
+    ["PlayingBG"] = {
+        { 
+            Path = arenaFolder .. "/PlayingBG.png",
+            Position = { 0, 0 },
+            Size = { 800, 600 }, 
+            AnchorPoint = { 0, 0 },
+            Color = { 255, 255, 255 }
+        }
+    },
+    ["Judge"] = { 
+        { 
+            Path = arenaFolder .. "/JudgeMiss.png", 
+            Position = { offset + 94, 360 },
+            Size = { 128, 128 },
+            AnchorPoint = { 0.5, 0.5 }, 
+            Color = { 255, 255, 255 }
+        }, 
+        { 
+            Path = arenaFolder .. "/JudgeBad.png", 
+            Position = { offset + 94, 360 },
+            Size = { 128, 128 },
+            AnchorPoint = { 0.5, 0.5 }, 
+            Color = { 255, 255, 255 }
+        }, 
+        { 
+            Path = arenaFolder .. "/JudgeGood.png", 
+            Position = { offset + 94, 360 },
+            Size = { 128, 128 },
+            AnchorPoint = { 0.5, 0.5 }, 
+            Color = { 255, 255, 255 }
+        }, 
+        { 
+            Path = arenaFolder .. "/JudgeCool.png", 
+            Position = { offset + 94, 360 },
+            Size = { 128, 128 },
+            AnchorPoint = { 0.5, 0.5 }, 
+            Color = { 255, 255, 255 }
+        } 
+    }
+}
+
+local DataNumerics = {
+    ["Combo"] = {
+        { 
+            Files = {},
+            Position = { offset + 94, 194 },
+            Size = { 51, 82 },
+            MaxDigit = 99,
+            Direction = Enum.NumericDirection.Mid,
+            FillWithZero = false,
+            Color = { 255, 255, 255 }
         }
     }
-    
-    if (arenaIndex == 1) then
-        
-    elseif (arenaIndex == 2) then
-        
-    elseif (arenaIndex == 3) then
-        
-    elseif (arenaIndex == 4) then
-        
-    elseif (arenaIndex == 5) then
-        
-    elseif (arenaIndex == 6) then
-        
-    elseif (arenaIndex == 7) then
-        
-    elseif (arenaIndex == 8) then
-        
-    elseif (arenaIndex == 9) then
-        
-    elseif (arenaIndex == 10) then
-        
-    elseif (arenaIndex == 11) then
-        
-    elseif (arenaIndex == 12) then
-        
-    end
+}
 
-    return arenaData
+for i=1, 10 do
+    table.insert(DataNumerics["Combo"][1].Files, arenaFolder .. "/ComboNum" .. tostring(i - 1)  .. ".png");
+end
+
+local DataSprite = {
+    ["ComboLogo"] = {
+        Files = {},
+        Position = { offset + 99, 213 },
+        Size = { 64, 64 },
+        AnchorPoint = { 0.5, 1.0 },
+        FrameTime = 18.0,
+        Color = { 255, 255, 255 }
+    },
+    ["HitEffect"] = {
+        Files = {},
+        Position = { 0, 0 }, 
+        Size = { 256, 256 },
+        AnchorPoint = { 0.5, 0.45 },
+        FrameTime = 30.0,
+        Color = { 255, 255, 255 }
+    },
+    ["HoldEffect"] = {
+        Files = {},
+        Position = { 0, 0 },
+        Size = { 256, 256 },
+        AnchorPoint = { 0.5, 0.45 },
+        FrameTime = 30.0,
+        Color = { 255, 255, 255 }
+    }
+}
+
+for i=1, 6 do
+    table.insert(DataSprite["ComboLogo"].Files, arenaFolder .. "/ComboLogo" .. tostring(i - 1)  .. ".png");
+end
+
+for i=1, 9 do
+    table.insert(DataSprite["HitEffect"].Files, arenaFolder .. "/HitEffect" .. tostring(i - 1)  .. ".png");
+end
+
+for i=1, 3 do
+    table.insert(DataSprite["HoldEffect"].Files, arenaFolder .. "/HoldEffect" .. tostring(i - 1)  .. ".png");
 end
 
 return {
-    type = HeaderType.Playing,
-    init = init
+    Type = Enum.HeaderType.Arena,
+    Data = {
+        [Enum.DataType.Position] = DataPositions,
+        [Enum.DataType.Numeric] = DataNumerics,
+        [Enum.DataType.Sprite] = DataSprite
+    }
 }

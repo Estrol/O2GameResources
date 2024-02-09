@@ -37,7 +37,8 @@ Enum HeaderType {
 	Position,
 	Rect,
 	Note,
-	Sprite
+	Sprite,
+	Tween
 }
 ```
 
@@ -50,4 +51,6 @@ Game::GetArenaIndex() -- return index of arena
 Game::GetHitPosition() -- return lane Y position offset
 Game::GetLaneOffset() -- return lane X position offset
 Game::GetResolution() -- return game resolution (width, height)
+Game::GetSkinPath() -- return path to skin folder
+Game::GetKeyCount() -- return number of keys like 7 keys or 4 keys
 ```
