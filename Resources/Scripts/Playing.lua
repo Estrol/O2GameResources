@@ -54,10 +54,10 @@ local init = function()
                 ["MeasureLine"] = {
                     { 0, 0, 0, 0, 255, 255, 255 }
                 },
-				["NoteMods"] = {
+		["NoteMods"] = {
                     { 580, 40, 0, 0, 255, 255, 255 }
                 },
-				["VisualMods"] = {
+		["VisualMods"] = {
                     { 620, 40, 0, 0, 255, 255, 255 }
                 }
             }
@@ -67,23 +67,23 @@ local init = function()
         -- Alignment: LEFT, MID, RIGHT or -1, 0, 1
         [DataType.Numeric] = {
             ["Score"] = {
-                { offset + 183, 566, 8, "LEFT", false, 255, 255, 255 }
+                { offset + 183, 566, 99, "LEFT", false, 255, 255, 255 }
             },
             ["Jam"] = {
-                { offset + 94, 120, 4, "MID", false, 255, 255, 255 }
+                { offset + 94, 120, 99, "MID", false, 255, 255, 255 }
             },
             ["LongNoteCombo"] = {
-                { offset + 94, 300, 5, "MID", false, 255, 255, 255 }
+                { offset + 94, 300, 99, "MID", false, 255, 255, 255 }
             },
             ["Stats"] = {
-                { 792, 96, 9, "LEFT", false, 255, 255, 255 }, -- Cool
-                { 792, 107, 9, "LEFT", false, 255, 255, 255 }, -- Good
-                { 792, 118, 9, "LEFT", false, 255, 255, 255 }, -- Bad
-                { 792, 129, 9, "LEFT", false, 255, 255, 255 }, -- Miss
-                { 792, 84, 9, "LEFT", false, 255, 255, 255 } -- MaxCombo
+                { 792, 96, 99, "LEFT", false, 255, 255, 255 }, -- Cool
+                { 792, 107, 99, "LEFT", false, 255, 255, 255 }, -- Good
+                { 792, 118, 99, "LEFT", false, 255, 255, 255 }, -- Bad
+                { 792, 129, 99, "LEFT", false, 255, 255, 255 }, -- Miss
+                { 792, 84, 99, "LEFT", false, 255, 255, 255 } -- MaxCombo
             },
             ["Minute"] = {
-                { 725, 46, 9, "LEFT", false, 255, 255, 255 }
+                { 725, 46, 99, "LEFT", false, 255, 255, 255 }
             },
             ["Second"] = {
                 { 792, 46, 2, "LEFT", true, 255, 255, 255 }
